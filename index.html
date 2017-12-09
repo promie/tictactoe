@@ -38,27 +38,27 @@
 				<p class="author">A Project By P Yutasane</p>
 				<div class="gameboard" id="gameboard">
 					<div class="row">
-						<div class="square" data-i="0" data-j="0"></div>
-						<div class="square" data-i="0" data-j="1"></div>
-						<div class="square" data-i="0" data-j="2"></div>
+						<div class="square" id="0"></div>
+						<div class="square" id="1"></div>
+						<div class="square" id="2"></div>
 					</div>
 
 					<div class="row">
-						<div class="square" data-i="1" data-j="0"></div>
-						<div class="square" data-i="1" data-j="1"></div>
-						<div class="square" data-i="1" data-j="2"></div>
+						<div class="square" id="3"></div>
+						<div class="square" id="4"></div>
+						<div class="square" id="5"></div>
 					</div>
 
 					<div class="row">
-						<div class="square" data-i="2" data-j="0"></div>
-						<div class="square" data-i="2" data-j="1"></div>
-						<div class="square" data-i="2" data-j="2"></div>
+						<div class="square" id="6"></div>
+						<div class="square" id="7"></div>
+						<div class="square" id="8"></div>
 					</div>
 				</div>
 				<div class="marginTop"></div>
-				<button class="btn btn-info btn-lg" id="restart">RESTART</button>
-				<p id="win">Player 1 Has Won The Game!!!</p>
-				<p id="hal">AI has won the Game!!!</p>
+
+				<div id="winnerMessage"></div>
+				<button class="btn btn-info btn-lg" onclick="startGame()" id="restart">RESTART</button>
 			</div>
 		</div>
 	</div>

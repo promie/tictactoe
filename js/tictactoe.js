@@ -1,114 +1,70 @@
+let origBoard;
+const humanPlayer = 'O';
+const aiPlayer = 'X';
+const winCombos = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2]
+]
 
-const PLAYER_TOKEN = 'X',
-    COMPUTER_TOKEN = 'O';
+const cells = document.querySelectorAll('.square');
 
-$(document).ready(function(){
-
-    const grid = [
-        [' ', ' ', ' '],
-        [' ', ' ', ' '],
-        [' ', ' ', ' ']
-    ]
-
-    const isGameOver = () =>{
-        //Check Horizontal
-        for(let i=0; i<3; i++){
-            if(grid[i][0] !== ' ' &&
-            grid[i][0] === grid[i][1] &&
-            grid[i][0] === grid[i][2]){
-                return grid[i][0];
-            }
-        }
-
-        //Check Vertical
-        for(let j=0; j<3; j++){
-            if(grid[0][j] !== ' ' &&
-            grid[0][j] === grid[1][j] &&
-            grid[0][j] === grid[2][j]){
-                return grid[0][j];
-            }
-        }
-
-        //Check Diagonal - top left bottom right
-        if(grid[0][0] !== ' ' &&
-            grid[0][0] === grid[1][1] &&
-            grid[0][0] === grid[2][2]){
-            return grid[0][0];
-        }
-        
-
-        //Check Diagonal - bottom left bottom right
-        if(grid[2][0] !== ' ' &&
-            grid[2][0] === grid[1][1] &&
-            grid[2][0] === grid[0][2]){
-                return grid[2][0];
-        }
-
-        //Check if the board is empty or not
-        for(let i=0; i<3; i++){
-            for(let j=0; j<3; j++){
-                if(grid[i][j] === ' '){
-                    return false;
-                }
-            }
-        }
-        return null;
+const startGame = () =>{
+    document.getElementById('restart').style.display = 'block';
+    origBoard = Array.from(Array(9).keys());
+    console.log(origBoard);
+    for(let i=0; i < cells.length; i++){
+        cells[i].innerText = '';
+        cells[i].style.removeProperty('background-color');
+        cells[i].addEventListener('click', turnClick, false);
     }
+}
 
-    const moveAI = () =>{
-        for(let i=0; i<3; i++){
-            for(let j=0; j<3; j++){
-                if(grid[i][j] === ' '){
-                    return{
-                        i: i,
-                        j: j
-                    };
-                }
-            }
+const turnClick = (square) =>{
+    turn(square.target.id, humanPlayer);
+}
+
+const turn = (squareID, player) =>{
+    origBoard[squareID] = player;
+    document.getElementById(squareID).innerHTML = player;
+
+    let gameWon = checkWin(origBoard, player);
+    if(gameWon) gameOver(gameWon);
+}
+
+const checkWin = (board, player) =>{
+    let plays = board.reduce((a, e, i) =>
+    (e === player) ? a.concat(i) : a, []);
+
+    let gameWon = null;
+
+    for(let [index, win] of winCombos.entries()){
+        if(win.every(elem => plays.indexOf(elem) > -1)){
+            gameWon = {index: index, player: player};
+            break;
         }
     }
 
-    $('.square').on('click', function(){
-        $(this).html(PLAYER_TOKEN);
-        const i = $(this).data('i');
-        const j = $(this).data('j');
-        grid[i][j] = PLAYER_TOKEN;
-        console.log(grid);
+    return gameWon;
+}
 
-        let gameState = isGameOver();
-        if(gameState){
-            alert(`game over: ${gameState}`);
-            return;
-            
-        }else{
-            const move = moveAI();
-            grid[move.i][move.j] = COMPUTER_TOKEN;
-           
-            let row = move.j,
-                column = move.i;
-            
-            $(`.square[data-i="${column}"][data-j="${row}"]`).html(COMPUTER_TOKEN);
-            
-        }
+const gameOver = (gameWon) =>{
+    for(let index of winCombos[gameWon.index]){
+        document.getElementById(index).style.backgroundColor = 
+        gameWon.player == humanPlayer ? "blue" : "red";
+    }
 
-        gameState = isGameOver();
-        if(gameState){
-            alert(`game over: ${gameState}`);
-        }
-
-    });
-
-    //Restart Button
-    $('#restart').on('click', function(){
-        for(let i=0; i<3; i++){
-            for(let j=0; j<3; j++){
-                grid[i][j] = ' ';
-                $(`.square[data-i="${i}"][data-j="${j}"]`).html(' ');
-            }
-        }
-    });
+    for(let i=0; i<cells.length; i++){
+        cells[i].removeEventListener('click', turnClick, false);
+    }
+}
 
 
+//Function Call
+startGame();
 
-
-});

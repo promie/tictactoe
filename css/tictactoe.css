@@ -62,3 +62,7 @@ body{
     margin-left: 85px;
     margin-bottom:30px;
 }
+
+#restart{
+    display: block;
+}
