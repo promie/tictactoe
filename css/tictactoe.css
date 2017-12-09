@@ -1,47 +1,53 @@
-body{
-    margin: 0px;
-    margin-top: 10px;
-    background-color: blue;
-    text-align: center;
-}
-
-.col{
-    display: inline-block;
-    width:90px;
-    height: 90px;
-    text-align:center;
-    background-color: white;
-    font-size: 40px;
-    padding: 20px;
-}
 
 /*=====HEAD SECTION=====*/
 .github{
-    font-size: 25px;
+    font-size: 35px;
     text-decoration: none;
-    color: white;
+    color: black;
     margin-top: 10px;
     text-decoration: none;
 }
 
 .github:hover{
-    font-size: 25px;
+    font-size: 35px;
     text-decoration: none;
-    color:white;
+    color:black;
     margin-top: 10px;
     text-decoration: none;
 }
-.title{
-    color: white;
-}
-.author{
-    color: white;
-    margin-top: -12px;
-    margin-left: 90px;
-    font-size: 12px;
-    margin-bottom: 50px;
+
+/*=====TIC-TAC-TOE SECTION=====*/
+.gameboard{
+    width: 300px;
+    height: 300px;
+    margin: auto;
 }
 
-.btn{
-    margin-top: 20px;
+.square{
+    float: left;
+    background: rgba(255,255,255,.9);
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+    text-align: center;
+    font-size: 70px;
+}
+
+.ex{
+    background-color: white;
+
+}
+
+.oh{
+    background-color: white;
+}
+
+body{
+    background: no-repeat center center fixed;
+    background-color: lightblue;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
