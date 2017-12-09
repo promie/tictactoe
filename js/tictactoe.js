@@ -15,7 +15,7 @@ const winCombos = [
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
-    document.getElementById('restart').style.display = 'block';
+    document.getElementById('winner').style.display = 'none';
     origBoard = Array.from(Array(9).keys());
     console.log(origBoard);
     for(let i=0; i < cells.length; i++){
@@ -26,7 +26,10 @@ const startGame = () =>{
 }
 
 const turnClick = (square) =>{
-    turn(square.target.id, humanPlayer);
+    if(typeof origBoard[square.target.id] == 'number'){
+        turn(square.target.id, humanPlayer);
+        if(!checkTie()) turn(bestSpot(), aiPlayer);
+    }
 }
 
 const turn = (squareID, player) =>{
@@ -62,7 +65,39 @@ const gameOver = (gameWon) =>{
     for(let i=0; i<cells.length; i++){
         cells[i].removeEventListener('click', turnClick, false);
     }
+
+    declareWinner(gameWon.player == humanPlayer ? "You Win!" : "You Lose!");
 }
+
+const declareWinner = (who) =>{
+    document.getElementById('winner').style.display = 'block';
+    document.getElementById('winner').innerText = who;
+}
+
+const emptySquares = () =>{
+    return origBoard.filter(s => typeof s == 'number');
+}
+
+const bestSpot = () => {
+    return emptySquares()[0];
+}
+
+const checkTie = () => {
+    if(emptySquares().length == 0){
+        for(let i=0; i<cells.length; i++){
+            cells[i].style.backgroundColor = 'green';
+            cells[i].removeEventListener('click', turnClick, false);
+        }
+        declareWinner('Tie Game!');
+        return true;
+    }
+
+    return false;
+}
+
+
+//Basic AI
+
 
 
 //Function Call
