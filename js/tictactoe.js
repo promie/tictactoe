@@ -1,6 +1,6 @@
 
 const PLAYER_TOKEN = 'X',
-    COMPUTER_TOKEN = 'Y';
+    COMPUTER_TOKEN = 'O';
 
 $(document).ready(function(){
 
@@ -81,12 +81,15 @@ $(document).ready(function(){
         if(gameState){
             alert(`game over: ${gameState}`);
             return;
+            
         }else{
             const move = moveAI();
             grid[move.i][move.j] = COMPUTER_TOKEN;
            
+            let row = move.j,
+                column = move.i;
             
-            $('.square[data-i="' + move.i + '" data-j="' + move.j + '"]').html(COMPUTER_TOKEN);
+            $(`.square[data-i="${column}"][data-j="${row}"]`).html(COMPUTER_TOKEN);
             
         }
 
