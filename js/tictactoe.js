@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    startGame();
+});
+
 let origBoard;
 const humanPlayer = 'O';
 const aiPlayer = 'X';
@@ -17,7 +21,6 @@ const cells = document.querySelectorAll('.square');
 const startGame = () =>{
     document.getElementById('winner').style.display = 'none';
     origBoard = Array.from(Array(9).keys());
-    console.log(origBoard);
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
         cells[i].style.removeProperty('background-color');
@@ -52,7 +55,6 @@ const checkWin = (board, player) =>{
             break;
         }
     }
-
     return gameWon;
 }
 
@@ -65,7 +67,6 @@ const gameOver = (gameWon) =>{
     for(let i=0; i<cells.length; i++){
         cells[i].removeEventListener('click', turnClick, false);
     }
-
     declareWinner(gameWon.player == humanPlayer ? "You Win!" : "You Lose!");
 }
 
@@ -93,13 +94,12 @@ const checkTie = () => {
         declareWinner('Tie Game!');
         return true;
     }
-
     return false;
 }
 
 //The Minimax Algorithm - Unbeatable AI --> --> Place in the bestSpot() function (return minimax(origBoard, aiPlayer).index)
 const minimax = (newBoard, player) => {
-	var availSpots = emptySquares(newBoard);
+	const availSpots = emptySquares(newBoard);
     
         if (checkWin(newBoard, humanPlayer)) {
             return {score: -10};
@@ -109,46 +109,41 @@ const minimax = (newBoard, player) => {
             return {score: 0};
         }
         var moves = [];
-        for (var i = 0; i < availSpots.length; i++) {
-            var move = {};
+        for (let i = 0; i < availSpots.length; i++) {
+            const move = {};
             move.index = newBoard[availSpots[i]];
             newBoard[availSpots[i]] = player;
     
             if (player == aiPlayer) {
-                var result = minimax(newBoard, humanPlayer);
+                const result = minimax(newBoard, humanPlayer);
                 move.score = result.score;
             } else {
-                var result = minimax(newBoard, aiPlayer);
+                const result = minimax(newBoard, aiPlayer);
                 move.score = result.score;
-            }
-    
+            } 
             newBoard[availSpots[i]] = move.index;
-    
             moves.push(move);
         }
     
         var bestMove;
         if(player === aiPlayer) {
-            var bestScore = -10000;
-            for(var i = 0; i < moves.length; i++) {
+            let bestScore = -10000;
+            for(let i = 0; i < moves.length; i++) {
                 if (moves[i].score > bestScore) {
                     bestScore = moves[i].score;
                     bestMove = i;
                 }
             }
         } else {
-            var bestScore = 10000;
-            for(var i = 0; i < moves.length; i++) {
+            let bestScore = 10000;
+            for(let i = 0; i < moves.length; i++) {
                 if (moves[i].score < bestScore) {
                     bestScore = moves[i].score;
                     bestMove = i;
                 }
             }
         }
-    
         return moves[bestMove];
     }
 
-//Function Call
-startGame();
 
