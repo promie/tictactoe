@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Hanalei+Fill');
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+
 
 /*=====HEAD SECTION=====*/
 .github{
@@ -16,6 +19,11 @@
     text-decoration: none;
 }
 
+.title{
+    font-family: 'Hanalei Fill', cursive;
+    font-size: 50px;
+}
+
 /*=====TIC-TAC-TOE SECTION=====*/
 .gameboard{
     width: 315px;
@@ -25,7 +33,7 @@
 
 .square{
     float: left;
-    background: rgba(255,255,255,.9);
+    background: rgba(255,255,255,.5);
     width: 105px;
     height: 105px;
     border: 1px solid black;
@@ -45,7 +53,7 @@
 
 body{
     background: no-repeat center center fixed;
-    background-color: lightblue;
+    background-image: url('https://madure.files.wordpress.com/2011/05/wood.jpg');
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -57,12 +65,15 @@ body{
 }
 
 .author{
-    font-size: 12px;
+    font-size: 13px;
     margin-top: -15px;
-    margin-left: 85px;
+    margin-left: 83px;
     margin-bottom:30px;
+    font-family: 'Nova Mono', monospace;
+    font-weight: bold;
 }
 
 #winner{
     display: block;
+    width:
 }

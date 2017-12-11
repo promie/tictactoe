@@ -19,7 +19,7 @@ const winCombos = [
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
-    document.getElementById('winner').style.display = 'none';
+    document.getElementById('winner').style.display = 'block';
     origBoard = Array.from(Array(9).keys());
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
@@ -72,7 +72,8 @@ const gameOver = (gameWon) =>{
 
 const declareWinner = (who) =>{
     document.getElementById('winner').style.display = 'block';
-    document.getElementById('winner').innerText = who;
+    document.getElementById('winnerMessage').style.display = 'block';
+    document.getElementById('winnerMessage').innerText = who;
 }
 
 //Picks the next available square --> Place in the bestSpot() function (return emptySquares()[0])
