@@ -19,7 +19,7 @@ const winCombos = [
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
-    document.getElementById('winner').style.display = 'block';
+    document.getElementById('winner').style.display = 'none';
     origBoard = Array.from(Array(9).keys());
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
@@ -61,7 +61,7 @@ const checkWin = (board, player) =>{
 const gameOver = (gameWon) =>{
     for(let index of winCombos[gameWon.index]){
         document.getElementById(index).style.backgroundColor = 
-        gameWon.player == humanPlayer ? "blue" : "red";
+        gameWon.player == humanPlayer ? "lightblue" : "red";
     }
 
     for(let i=0; i<cells.length; i++){
@@ -89,7 +89,7 @@ const bestSpot = () => {
 const checkTie = () => {
     if(emptySquares().length == 0){
         for(let i=0; i<cells.length; i++){
-            cells[i].style.backgroundColor = 'green';
+            cells[i].style.backgroundColor = 'lightgreen';
             cells[i].removeEventListener('click', turnClick, false);
         }
         declareWinner('Tie Game!');
