@@ -19,7 +19,7 @@ const winCombos = [
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
-    document.getElementById('winner').style.display = 'none';
+    document.getElementById('winnerMessage').style.display = 'none';
     origBoard = Array.from(Array(9).keys());
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
@@ -71,9 +71,16 @@ const gameOver = (gameWon) =>{
 }
 
 const declareWinner = (who) =>{
-    document.getElementById('winner').style.display = 'block';
     document.getElementById('winnerMessage').style.display = 'block';
     document.getElementById('winnerMessage').innerText = who;
+
+    if(who === 'You Win!'){
+        document.getElementById('winnerMessage').style.color = 'lightblue';
+    }else if(who === 'You Lose!'){
+        document.getElementById('winnerMessage').style.color = 'red';
+    }else{
+        document.getElementById('winnerMessage').style.color = 'green'
+    }
 }
 
 //Picks the next available square --> Place in the bestSpot() function (return emptySquares()[0])
@@ -92,7 +99,7 @@ const checkTie = () => {
             cells[i].style.backgroundColor = 'lightgreen';
             cells[i].removeEventListener('click', turnClick, false);
         }
-        declareWinner('Tie Game!');
+        declareWinner("It's a Tie!");
         return true;
     }
     return false;

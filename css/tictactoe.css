@@ -31,23 +31,17 @@
     margin: auto;
 }
 
-#winner{
-    width: 300px;
-    height: 100px;
-    background-color: black;
-    text-align: center;
-    margin-left: 405px;
-    margin-top: -230px;
-    position: absolute;
-}
 
 #winnerMessage{
-
     font-family: 'Hanalei Fill', cursive;
-    padding-top: 18px;
+    padding-top: 5px;
     font-size: 50px;
-    color: white;
+    color: blue;
 
+}
+
+#restart{
+    margin-top: 10px;
 }
 
 .square{
@@ -77,10 +71,6 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-}
-
-.marginTop{
-    margin-top: 25px;
 }
 
 .author{
