@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    document.getElementById('score-board').style.display = 'none';
     startGame();
 });
 
@@ -15,11 +16,15 @@ const winCombos = [
     [0, 4, 8],
     [6, 4, 2]
 ]
-
+let humanScore = 0,
+    computerScore = 0;
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
     document.getElementById('winnerMessage').style.display = 'none';
+    document.getElementById('restart').style.display = 'none';
+    document.getElementById('human-score').innerHTML = humanScore;
+    document.getElementById('computer-score').innerHTML = computerScore;
     origBoard = Array.from(Array(9).keys());
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
@@ -71,15 +76,25 @@ const gameOver = (gameWon) =>{
 }
 
 const declareWinner = (who) =>{
+    document.getElementById('score-board').style.display = 'block';
     document.getElementById('winnerMessage').style.display = 'block';
+    document.getElementById('restart').style.display = 'block';
     document.getElementById('winnerMessage').innerText = who;
+    document.getElementById('restart').style.textAlign = 'center';
+
+    
 
     if(who === 'You Win!'){
         document.getElementById('winnerMessage').style.color = 'lightblue';
+        humanScore++;
+        document.getElementById('human-score').innerHTML = humanScore;
     }else if(who === 'You Lose!'){
         document.getElementById('winnerMessage').style.color = 'red';
+        computerScore++;
+        document.getElementById('computer-score').innerHTML = computerScore;
     }else{
-        document.getElementById('winnerMessage').style.color = 'green'
+        document.getElementById('winnerMessage').style.color = 'green';
+        document.getElementById('restart').style.color = 'green';
     }
 }
 
@@ -153,5 +168,6 @@ const minimax = (newBoard, player) => {
         }
         return moves[bestMove];
     }
+
 
 

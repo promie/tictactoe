@@ -42,6 +42,7 @@
 
 #restart{
     margin-top: 10px;
+    font-size: 40px;
 }
 
 .square{
@@ -82,4 +83,25 @@ body{
     font-weight: bold;
 }
 
+.scoreBoard{
+    display: inline-block;
+}
 
+table {
+    border-collapse: collapse;
+    width: 45%;
+    margin-bottom: 20px;
+    table-layout: fixed;
+    text-align: center;
+
+}
+
+table, td, th {
+    border: 1px solid black;
+    text-align: center; 
+    font-weight: bold;
+}
+
+table th{
+    background-color: lightblue;
+}
