@@ -76,12 +76,11 @@
 
 body{
     background: no-repeat center center fixed;
-    background-image: url('https://madure.files.wordpress.com/2011/05/wood.jpg');
+    background-color: burlywood;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: auto;
 }
 
 .author{
