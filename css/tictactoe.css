@@ -72,6 +72,7 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: auto;
 }
 
 .author{
@@ -89,7 +90,7 @@ body{
 
 table {
     border-collapse: collapse;
-    width: 45%;
+    width: 70%;
     margin-bottom: 20px;
     table-layout: fixed;
     text-align: center;
