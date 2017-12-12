@@ -65,4 +65,3 @@ Check out the completed projected - [Tic Tac Toe](https://promie.github.io/ticta
 
 ![alt text](https://github.com/promie/tictactoe/blob/master/img/minimax.png "Minimax Algorithm")
 ![alt text](https://github.com/promie/tictactoe/blob/master/img/minimax2.png "Minimax Algorithm")
-![alt text](https://github.com/promie/tictactoe/blob/master/img/minimax3.JPG "Minimax Algorithm")
