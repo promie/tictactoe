@@ -129,7 +129,7 @@ const minimax = (newBoard, player) => {
         } else if (availSpots.length === 0) {
             return {score: 0};
         }
-        var moves = [];
+        let moves = [];
         for (let i = 0; i < availSpots.length; i++) {
             const move = {};
             move.index = newBoard[availSpots[i]];
