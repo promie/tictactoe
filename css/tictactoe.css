@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Hanalei+Fill');
 @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+@import url('https://fonts.googleapis.com/css?family=Concert+One');
 
 
 /*=====HEAD SECTION=====*/
@@ -42,9 +43,24 @@
 
 #restart{
     margin-top: 10px;
-    font-size: 40px;
-    text-align: center;
+    display: inline-block;
+    font-family: 'Concert One', cursive;
+    font-size: 20px;
     padding-bottom: 20px;
+    text-align: center;
+    margin-left: -35px;
+    cursor: pointer;
+}
+
+#reset{
+    margin-top: 10px;
+    display: inline-block;
+    font-family: 'Concert One', cursive;
+    font-size: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-left: 130px;
+    cursor: pointer;
 }
 
 .square{
@@ -90,22 +106,16 @@ body{
     display: inline-block;
 }
 
-table {
-    border-collapse: collapse;
-    width: 90%;
-    margin-bottom: 20px;
-    table-layout: fixed;
-    text-align: center;
-
+.human{
+    display: inline-block;
+    margin-left: -20px;
+    font-family: 'Concert One', cursive;
+    font-size: 20px;
 }
 
-table, td, th {
-    border: 1px solid black;
-    text-align: center; 
-    font-weight: bold;
-}
-
-table th{
-    background-color: black;
-    color: white;
+.computer{
+    display: inline-block;
+    margin-left: 50px;
+    font-family: 'Concert One', cursive;
+    font-size: 20px;
 }

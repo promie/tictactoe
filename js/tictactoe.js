@@ -64,7 +64,7 @@ const checkWin = (board, player) =>{
 const gameOver = (gameWon) =>{
     for(let index of winCombos[gameWon.index]){
         document.getElementById(index).style.backgroundColor = 
-        gameWon.player == humanPlayer ? "lightblue" : "red";
+        gameWon.player == humanPlayer ? "lightgreen" : "red";
     }
 
     for(let i=0; i<cells.length; i++){
@@ -76,12 +76,9 @@ const gameOver = (gameWon) =>{
 const declareWinner = (who) =>{
     document.getElementById('winnerMessage').style.display = 'block';
     document.getElementById('winnerMessage').innerText = who;
-    document.getElementById('restart').style.textAlign = 'center';
-
-    
 
     if(who === 'You Win!'){
-        document.getElementById('winnerMessage').style.color = 'lightblue';
+        document.getElementById('winnerMessage').style.color = 'lightgreen';
         humanScore++;
         document.getElementById('human-score').innerHTML = humanScore;
     }else if(who === 'You Lose!'){
@@ -89,7 +86,7 @@ const declareWinner = (who) =>{
         computerScore++;
         document.getElementById('computer-score').innerHTML = computerScore;
     }else{
-        document.getElementById('winnerMessage').style.color = 'green';
+        document.getElementById('winnerMessage').style.color = 'lightblue';
     }
 }
 
@@ -100,13 +97,13 @@ const emptySquares = () =>{
 
 //Place the empty Squares or MiniMax Algogirthm function
 const bestSpot = () => {
-    return minimax(origBoard, aiPlayer).index;
+    return emptySquares()[0];
 }
 
 const checkTie = () => {
     if(emptySquares().length == 0){
         for(let i=0; i<cells.length; i++){
-            cells[i].style.backgroundColor = 'lightgreen';
+            cells[i].style.backgroundColor = 'lightblue';
             cells[i].removeEventListener('click', turnClick, false);
         }
         declareWinner("It's a Tie!");

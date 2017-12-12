@@ -36,18 +36,11 @@
 			<div class="col-md-12">
 				<h1 class="title text-center">TIC-TAC-TOE</h1>
 				<p class="author text-center">A Project By P Yutasane</p>
-				<div style="overflow-x:auto;" id="score-board">
-				<table align="center">
-						<tr>
-						  <th>HUMAN</th>
-						  <th>COMPUTER</th>
-						</tr>
-						<tr>
-						  <td id="human-score"></td>
-						  <td id="computer-score"></td>
-						</tr>
-					  </table>
-					</div>
+				<div id="score-board" class="text-center">
+					<div class="human"><i class="fa fa-user" aria-hidden="true"></i> HUMAN: <span id="human-score">0</span></div>
+					<div class="computer"><i class="fa fa-android" aria-hidden="true"></i> COMPUTER: <span id="computer-score">0</span></div>
+				</div>
+					
 				<div class="gameboard" id="gameboard">
 					<div class="row">
 						<div class="square" id="0"></div>
@@ -69,8 +62,10 @@
 				</div>
 					<div id="winnerMessage" class="text-center"></div>
 
-				<div id="restart" onclick="startGame()"><i class="fa fa-refresh" aria-hidden="true" ></i></div>
-	
+				<div class="text-center">
+					<div id="restart" onclick="startGame()">REPLAY</div>
+					<div id="reset">RESET</div>
+				</div>
 				
 			</div>
 		</div>
