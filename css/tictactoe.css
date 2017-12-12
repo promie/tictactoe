@@ -32,15 +32,6 @@
     margin: auto;
 }
 
-
-#winnerMessage{
-    font-family: 'Hanalei Fill', cursive;
-    padding-top: 5px;
-    font-size: 50px;
-    color: blue;
-
-}
-
 #restart{
     margin-top: 10px;
     display: inline-block;
@@ -111,6 +102,7 @@ body{
     margin-left: -20px;
     font-family: 'Concert One', cursive;
     font-size: 20px;
+    padding-bottom: 10px;
 }
 
 .computer{
@@ -118,4 +110,11 @@ body{
     margin-left: 50px;
     font-family: 'Concert One', cursive;
     font-size: 20px;
+}
+
+#message{
+    font-family: 'Concert One', cursive;
+    font-size: 20px;
+    color: white;
+    display: inline-block;
 }

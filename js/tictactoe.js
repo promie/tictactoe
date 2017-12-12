@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     startGame();
 });
 
@@ -20,7 +21,11 @@ let humanScore = 0,
 const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
-    document.getElementById('winnerMessage').style.display = 'none';
+    document.getElementById('human-score').style.color = 'black';
+    document.getElementById('human').style.color = 'black';
+    document.getElementById('computer-score').style.color = 'black';
+    document.getElementById('computer').style.color = 'black';
+    document.getElementById('message').style.display = 'none';
     document.getElementById('human-score').innerHTML = humanScore;
     document.getElementById('computer-score').innerHTML = computerScore;
     origBoard = Array.from(Array(9).keys());
@@ -74,19 +79,24 @@ const gameOver = (gameWon) =>{
 }
 
 const declareWinner = (who) =>{
-    document.getElementById('winnerMessage').style.display = 'block';
-    document.getElementById('winnerMessage').innerText = who;
+
+    document.getElementById('message').style.display = 'inline-block';
+    document.getElementById('message').innerHTML = who;
 
     if(who === 'You Win!'){
-        document.getElementById('winnerMessage').style.color = 'lightgreen';
+        document.getElementById('human').style.color = 'darkgreen';
+        document.getElementById('human-score').style.color = 'darkgreen';
+        document.getElementById('message').style.backgroundColor = 'darkgreen';
         humanScore++;
         document.getElementById('human-score').innerHTML = humanScore;
     }else if(who === 'You Lose!'){
-        document.getElementById('winnerMessage').style.color = 'red';
+        document.getElementById('computer').style.color = 'darkgreen';
+        document.getElementById('computer-score').style.color = 'darkgreen';
+        document.getElementById('message').style.backgroundColor = 'red';
         computerScore++;
         document.getElementById('computer-score').innerHTML = computerScore;
     }else{
-        document.getElementById('winnerMessage').style.color = 'lightblue';
+        document.getElementById('message').style.backgroundColor = 'lightblue';
     }
 }
 
@@ -160,6 +170,12 @@ const minimax = (newBoard, player) => {
         }
         return moves[bestMove];
     }
+
+const resetPage = () => {
+    humanScore = 0;
+    computerScore = 0;
+    startGame();
+}
 
 
 
