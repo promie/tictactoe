@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    document.getElementById('score-board').style.display = 'none';
     startGame();
 });
 
@@ -76,7 +75,6 @@ const gameOver = (gameWon) =>{
 }
 
 const declareWinner = (who) =>{
-    document.getElementById('score-board').style.display = 'block';
     document.getElementById('winnerMessage').style.display = 'block';
     document.getElementById('restart').style.display = 'block';
     document.getElementById('winnerMessage').innerText = who;
