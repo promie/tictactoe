@@ -1,11 +1,10 @@
 $(document).ready(function(){
-
     startGame();
 });
 
 let origBoard;
-const humanPlayer = 'O';
-const aiPlayer = 'X';
+const humanPlayer = 'X';
+const aiPlayer = 'O';
 const winCombos = [
     [0, 1, 2],
     [3, 4, 5],
@@ -19,15 +18,17 @@ const winCombos = [
 let humanScore = 0,
     computerScore = 0;
 const cells = document.querySelectorAll('.square');
+const message = document.getElementById('message');
+const human = document.getElementById('human');
+const humanScoreText = document.getElementById('human-score');
+const computer = document.getElementById('computer');
+const computerScoreText = document.getElementById('computer-score');
 
 const startGame = () =>{
-    document.getElementById('human-score').style.color = 'black';
-    document.getElementById('human').style.color = 'black';
-    document.getElementById('computer-score').style.color = 'black';
-    document.getElementById('computer').style.color = 'black';
-    document.getElementById('message').style.display = 'none';
-    document.getElementById('human-score').innerHTML = humanScore;
-    document.getElementById('computer-score').innerHTML = computerScore;
+    formatFontColour('black');
+    message.style.display = 'none';
+    humanScoreText.innerHTML = humanScore;
+    computerScoreText.innerHTML = computerScore;
     origBoard = Array.from(Array(9).keys());
     for(let i=0; i < cells.length; i++){
         cells[i].innerText = '';
@@ -79,24 +80,19 @@ const gameOver = (gameWon) =>{
 }
 
 const declareWinner = (who) =>{
-
-    document.getElementById('message').style.display = 'inline-block';
-    document.getElementById('message').innerHTML = who;
+    message.style.display = 'inline-block';
+    message.innerHTML = who;
 
     if(who === 'You Win!'){
-        document.getElementById('human').style.color = 'darkgreen';
-        document.getElementById('human-score').style.color = 'darkgreen';
-        document.getElementById('message').style.backgroundColor = 'darkgreen';
+        formatFontColour('darkgreen');
         humanScore++;
-        document.getElementById('human-score').innerHTML = humanScore;
+        humanScoreText.innerHTML = humanScore;
     }else if(who === 'You Lose!'){
-        document.getElementById('computer').style.color = 'darkgreen';
-        document.getElementById('computer-score').style.color = 'darkgreen';
-        document.getElementById('message').style.backgroundColor = 'red';
+        formatFontColour('red');
         computerScore++;
-        document.getElementById('computer-score').innerHTML = computerScore;
+        computerScoreText.innerHTML = computerScore;
     }else{
-        document.getElementById('message').style.backgroundColor = 'lightblue';
+        formatFontColour('lightblue');
     }
 }
 
@@ -107,7 +103,7 @@ const emptySquares = () =>{
 
 //Place the empty Squares or MiniMax Algogirthm function
 const bestSpot = () => {
-    return emptySquares()[0];
+    return minimax(origBoard, aiPlayer).index;
 }
 
 const checkTie = () => {
@@ -175,6 +171,34 @@ const resetPage = () => {
     humanScore = 0;
     computerScore = 0;
     startGame();
+}
+
+const formatFontColour = (fontColour) => {
+    switch(fontColour){
+        case 'black':
+            humanScoreText.style.color = fontColour;
+            human.style.color = fontColour;
+            computerScoreText.style.color = fontColour;
+            computer.style.color = fontColour;
+            break;
+        case 'darkgreen':
+            human.style.color = fontColour;
+            humanScoreText.style.color = fontColour;
+            message.style.backgroundColor = fontColour;
+            break;
+        case 'red':
+            computer.style.color = fontColour;
+            computerScoreText.style.color = fontColour;
+            message.style.backgroundColor = fontColour;
+            break;
+        case 'lightblue':
+            message.style.backgroundColor = fontColour;
+            humanScoreText.style.color = 'black';
+            human.style.color = 'black';
+            break;
+        default:
+            break;
+    }
 }
 
 
