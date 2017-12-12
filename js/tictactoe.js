@@ -90,7 +90,6 @@ const declareWinner = (who) =>{
         document.getElementById('computer-score').innerHTML = computerScore;
     }else{
         document.getElementById('winnerMessage').style.color = 'green';
-        document.getElementById('restart').style.color = 'green';
     }
 }
 
