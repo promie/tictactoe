@@ -21,7 +21,6 @@ const cells = document.querySelectorAll('.square');
 
 const startGame = () =>{
     document.getElementById('winnerMessage').style.display = 'none';
-    document.getElementById('restart').style.display = 'none';
     document.getElementById('human-score').innerHTML = humanScore;
     document.getElementById('computer-score').innerHTML = computerScore;
     origBoard = Array.from(Array(9).keys());
@@ -76,7 +75,6 @@ const gameOver = (gameWon) =>{
 
 const declareWinner = (who) =>{
     document.getElementById('winnerMessage').style.display = 'block';
-    document.getElementById('restart').style.display = 'block';
     document.getElementById('winnerMessage').innerText = who;
     document.getElementById('restart').style.textAlign = 'center';
 
