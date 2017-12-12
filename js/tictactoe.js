@@ -107,7 +107,7 @@ const emptySquares = () =>{
 
 //Place the empty Squares or MiniMax Algogirthm function
 const bestSpot = () => {
-    return emptySquares()[0];
+    return minimax(origBoard, aiPlayer).index;
 }
 
 const checkTie = () => {
