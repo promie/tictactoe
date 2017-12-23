@@ -2,7 +2,10 @@ $(document).ready(function(){
     startGame();
 });
 
-let origBoard;
+let origBoard,
+failSound = new Audio('http://soundbible.com/grab.php?id=836&type=mp3'),
+successSound = new Audio('http://soundbible.com/grab.php?id=2103&type=mp3'),
+drawSound = new Audio('http://soundbible.com/grab.php?id=499&type=mp3');
 const humanPlayer = 'X';
 const aiPlayer = 'O';
 const winCombos = [
@@ -84,26 +87,30 @@ const declareWinner = (who) =>{
     message.innerHTML = who;
 
     if(who === 'You Win!'){
+        successSound.play();
         formatFontColour('darkgreen');
         humanScore++;
         humanScoreText.innerHTML = humanScore;
     }else if(who === 'You Lose!'){
+        failSound.play();
         formatFontColour('red');
         computerScore++;
         computerScoreText.innerHTML = computerScore;
     }else{
+        drawSound.play();
         formatFontColour('lightblue');
     }
 }
 
-//Picks the next available square --> Place in the bestSpot() function (return emptySquares()[0])
 const emptySquares = () =>{
     return origBoard.filter(s => typeof s == 'number');
 }
 
-//Place the empty Squares or MiniMax Algogirthm function
+
 const bestSpot = () => {
+    
     return minimax(origBoard, aiPlayer).index;
+    //return emptySquares()[0];
 }
 
 const checkTie = () => {
@@ -118,7 +125,6 @@ const checkTie = () => {
     return false;
 }
 
-//The Minimax Algorithm - Unbeatable AI --> --> Place in the bestSpot() function (return minimax(origBoard, aiPlayer).index)
 const minimax = (newBoard, player) => {
 	const availSpots = emptySquares(newBoard);
     
