@@ -109,8 +109,8 @@ const emptySquares = () =>{
 
 const bestSpot = () => {
     
-    //return minimax(origBoard, aiPlayer).index;
-    return emptySquares()[0];
+    return minimax(origBoard, aiPlayer).index;
+    //return emptySquares()[0];
 }
 
 const checkTie = () => {
